@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Monitor</title>
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/d495971c43.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header>
+        <img class="logo" src="./imgs/logo.png" alt="">
+        <h1 class="permanent-marker-regular">Transactional System</h1>
+
+    </header>
+    <!-- center h1 -->
+
+    <main class="app">
+
+
+        <div class="workspace">
+
+
+            <div class="left-sidebar">
+                <div class=" workspace-accounts">
+                    <h2 class="roboto-light">Accounts</h2>
+                    <button onclick="ModalAccountOpen();" class="openmodal btn">Create Account</button>
+                    <div class="modalAccount">
+
+                        <label for="accountName">Account Name</label> <br><br>
+                        <!-- account name text -->
+                        <input class="accountNameField" type="text" id="accountName"><br><br>
+                        <label for="typeofaccount">Type</label> <br><br>
+                        <!-- select option -->
+                        <select class="typeOptionField" id="typeofaccount">
+                            <option value="Bank Account">Bank Account</option>
+                            <option value="Debit Card">Debit Card</option>
+                            <option value="Credit Card">Credit Card</option>
+                            <option value="Cash">Cash</option>
+                        </select><br><br>
+                        <label for="balance">Balance</label> <br><br>
+                        <!-- balance field -->
+                        <input class="balanceField" type="number" id="balance"><br><br>
+                        <!-- <input onclick="addAccount()" type="submit" value="Add Account"> -->
+                        <div>
+                            <button class="btn" onclick="addAccount();">Add Account</button>
+                            <button class="btn closeModal">Close</button>
+                        </div>
+
+
+                    </div>
+                    <div class="existing-accounts-box">
+                        <h2 class="existingAccountHeading">Existing Accounts</h2>
+                        <div class="existingAccounts">
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="transactions">
+                <h2 class="roboto-light">Transactions</h2>
+                <h2 class="total roboto-light">Total: <span class="euro">€</span><span class="totalAmount">0</span></h2>
+                <div class="transactions-entries">
+
+                </div>
+                <div class="transactionBtns">
+                    <button onclick="ModalIncomeOpen();" class="addTransactionBtn btn">Add Income</button>
+                    <button onclick="ModalExpenseOpen();" class="addTransactionBtn btn">Add Expense</button>
+                    <button onclick="ModalMoveOpen();" class="moveAccount btn">Move to Another
+                        account</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="modalIncome">
+            <!-- income category -->
+            <div>
+                <label for="categoryofincome">Category</label> <br><br>
+
+                <select class="categoryofincomeField" id="categoryofincome">
+                    <option value="Salary">Salary</option>
+                    <option value="Services">Services</option>
+                    <option value="Investment">Investment</option>
+                </select><br><br>
+            </div>
+
+            <!-- choose account -->
+            <div>
+                <label for="accountchoose">Choose Account</label><br><br>
+
+                <select class="accountincomeChooseField" id="accountChoose">
+
+
+                </select><br><br>
+            </div>
+
+            <!-- income amount -->
+            <div>
+                <label for="incomeAmount">Amount</label> <br><br>
+
+                <input class="incomeamountField" type="number" name="transactionamount" id="transactionamount"><br><br>
+            </div>
+
+            <div>
+                <button class="btn" onclick="addIncome();">Add Transaction</button>
+                <button class="btn closeModal">Close</button>
+            </div>
+
+
+        </div>
+
+        <div class="modalExpense">
+            <!-- expense category -->
+            <div>
+                <label for="categoryofexpense">Category</label> <br><br>
+
+                <select class="categoryofexpenseField" id="categoryofexpense">
+                    <option value="Car">Car</option>
+                    <option value="Education">Education</option>
+                    <option value="Convenient Store">Convenient Store</option>
+                    <option value="Shopping">Shopping</option>
+                </select><br><br>
+            </div>
+
+            <!-- choose account -->
+            <div>
+                <label for="accountchooseExpense">Choose Account</label><br><br>
+
+                <select class="accountchooseExpenseField" id="accountchooseExpense">
+
+
+
+                </select><br><br>
+            </div>
+
+            <!-- expense amount -->
+            <div>
+                <label for="expenseAmount">Amount</label> <br><br>
+
+                <input class="expenseamountField" type="number" name="expenseAmount" id="expenseAmount"><br><br>
+            </div>
+
+            <!-- btns -->
+            <div>
+                <button class="btn" onclick="addExpense();">Add Transaction</button>
+                <button class="btn closeModal">Close</button>
+            </div>
+
+        </div>
+
+        <div class="modalmoveAccount">
+
+            <!-- choose to move from  -->
+            <div>
+                <label for="accounttomovefrom">Account to Move from</label><br><br>
+
+                <select class="moveFrom accountsMove" id="accounttomovefrom">
+
+
+
+                </select><br><br>
+            </div>
+
+            <!-- account to move to -->
+            <div>
+                <label for="accounttomoveto">Account to Move to</label><br><br>
+
+                <select class="moveTo accountsMove" id="accounttomovefrom">
+
+
+
+                </select><br><br>
+            </div>
+
+            <!-- move money amount -->
+            <div>
+                <label for="moveamount">Amount</label> <br><br>
+
+                <input class="moveAmount" type="number" name="moveamount" id="moveamount"><br><br>
+            </div>
+
+            <!-- btns -->
+            <div>
+                <button class="btn" onclick="moveMoney();">Add Transaction</button>
+                <button class="btn closeModal">Close</button>
+            </div>
+
+        </div>
+
+    </main>
+    <footer>
+        <p class="permanent-marker-regular ">&copy; Copyright <span class="dynYear"></span> - Created By Costas Nicou
+        </p>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/costas.nicou.3/" target="_blank"><i
+                    class="fa-brands fa-square-facebook"></i></a>
+            <a href="https://www.instagram.com/cnicou.tech/" target="_blank"><i
+                    class="fa-brands fa-square-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/cnicou/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://github.com/nicoycostas" target="_blank"><i class="fa-brands fa-square-github"></i></a>
+
+        </div>
+    </footer>
+
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
