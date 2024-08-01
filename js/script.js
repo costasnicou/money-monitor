@@ -141,7 +141,7 @@ function ModalMoveOpen() {
 //----------DATA ENTRY AND CALCULATION-------------//
 // Add account function 
 function addAccount() {
-    let randomnum = Math.floor(Math.random() * 100000000);
+    let randomnum = Date.now() + Math.floor(Math.random() * 10);
     let newAccount = new Account(randomnum, accountNameField.value, typeOptionField.value, Number(balanceField.value));
     accountArray.push(newAccount);
     if (accountArray.length >= 2) moveAccount.disabled = false;
@@ -173,6 +173,16 @@ function addAccount() {
         // addTransactionBtns[i].style.disabled = true;
         addTransactionBtns[i].disabled = false;
     }
+
+    let accountAmount = document.querySelectorAll('.accountAmount');
+    accountAmount.forEach(ele => {
+
+        accountAmount.forEach(ment => {
+            if (ele.getAttribute("id") == ment.getAttribute("id")) {
+                console.log(`Same if found ele: ${ele.getAttribute("id")}, ment: ${ment.getAttribute("id")}`)
+            }
+        })
+    })
 
 
 
@@ -339,10 +349,7 @@ function subtruction(obj) {
                             let accountAmount = document.querySelectorAll('.accountAmount');
                             accountAmount.forEach(sameid => {
                                 if (el.getAttribute('id') == sameid.getAttribute('id')) {
-                                    // console.log(`ID el ${el.getAttribute('id')} and ${sameid.getAttribute('id')} are equal`);
-                                    let newrandomNumber = Math.floor(Math.random() * 100000000);
-                                    accountArray[i].random = newrandomNumber;
-                                    el.setAttribute("id", newrandomNumber.toString())
+
 
                                     el.innerHTML = expenseFinal;
                                 }
